@@ -7,6 +7,7 @@ import java.sql.SQLException;
 public class DBTest{
     static Connection a = null;
 
+
     @Test
     public void givenUpdatedData_shouldRetrieve_correctRecords() {
         try {
@@ -45,6 +46,16 @@ public class DBTest{
             a = DataBase.connected();
             String expected = DataBase.sumByGroup(a);
             Assert.assertEquals("110000.0", expected);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    @Test
+    void givenGender_shouldReturn_avgSalary() {
+        try {
+            a = DataBase.connected();
+            String expected = DataBase.avgSalary(a);
+            Assert.assertEquals("40000.0", expected);
         } catch (SQLException e) {
             e.printStackTrace();
         }
